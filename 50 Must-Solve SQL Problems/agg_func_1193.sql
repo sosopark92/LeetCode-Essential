@@ -1,0 +1,13 @@
+
+SELECT DATE_FORMAT(TRANS_DATE, '%y-%M') AS MONTH,
+    COUNTRY,
+    COUNT(*) AS TRANS_COUNT,
+    SUM(STATE = "approved") AS APPROVED_COUNT,
+    --can't use count() it only counts the rows that are not NULL
+    SUM(AMOUNT) as TRANS_TOTAL_AMOUNT, 
+    SUM(CASE
+        WHEN STATE = 'APPROVED' THEN AMOUNT
+        ELSE 0
+    END) AS APPROVED_TOTAL_AMOUNT
+FROM TRANSACTIONS
+GROUP BY MONTH, COUNTRY;
