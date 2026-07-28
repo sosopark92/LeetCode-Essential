@@ -6,7 +6,7 @@
 
 # Given a string s, return true if it is a palindrome, or false otherwise.
 
-class Solution:
+class Solution:  
     def isPalindrome(self, s: str) -> bool:
         # Convert the string to lowercase and filter out non-alphanumeric characters
         filtered_chars = [char.lower() for char in s if char.isalnum()]
